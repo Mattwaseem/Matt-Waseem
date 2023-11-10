@@ -1,5 +1,4 @@
-let scene, camera, renderer;
-let clouds = []; // Array to store the electron clouds
+let scene, camera, renderer, controls;
 
 function init() {
     // Scene
@@ -11,8 +10,13 @@ function init() {
 
     // Renderer
     renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setClearColor(0xaaaaaa); // Set a gray clear color
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
+
+    // Add OrbitControls
+    controls = new THREE.OrbitControls(camera, renderer.domElement);
+    //... rest of your controls setup
 
     // Lighting
     const ambientLight = new THREE.AmbientLight(0x404040); // soft white light
@@ -24,10 +28,11 @@ function init() {
     const nucleus = new THREE.Mesh(nucleusGeometry, nucleusMaterial);
     scene.add(nucleus);
 
-    // Electron Clouds
-    clouds.push(createElectronCloud(2, 0x00ff00, 0.5, -5));
-    clouds.push(createElectronCloud(3, 0x0000ff, 0.3, -10));
-    // More electron clouds can be added with different parameters.
+    // Electron Shells
+    const shellColors = [0xff0000, 0xff8c00, 0xffff00, 0x00ff00, 0x0000ff, 0x4b0082]; // Colors for each shell
+    for (let i = 1; i <= 6; i++) {
+        clouds.push(createElectronShell(i * 2, shellColors[i - 1], 0.5, -(i * 2)));
+    }
 
     // Handle window resize
     window.addEventListener('resize', onWindowResize, false);
@@ -39,36 +44,13 @@ function init() {
     animate();
 }
 
-function createElectronCloud(radius, color, opacity, zPosition) {
-    const cloudGeometry = new THREE.TorusGeometry(radius, 0.1, 16, 100);
-    const cloudMaterial = new THREE.MeshBasicMaterial({ color: color, transparent: true, opacity: opacity });
-    const cloud = new THREE.Mesh(cloudGeometry, cloudMaterial);
-    cloud.rotation.x = Math.PI / 2; // Rotate the torus for a horizontal orientation
-    cloud.position.z = zPosition; // Set the z position
-    scene.add(cloud);
-    return cloud;
+function createElectronShell(radius, color, opacity, zPosition) {
+    const shellGeometry = new THREE.SphereGeometry(radius, 32, 32);
+    const shellMaterial = new THREE.MeshBasicMaterial({ color: color, transparent: true, opacity: opacity, wireframe: true });
+    const shell = new THREE.Mesh(shellGeometry, shellMaterial);
+    shell.position.z = zPosition;
+    scene.add(shell);
+    return shell;
 }
 
-function onWindowResize() {
-    // Update camera aspect ratio and renderer size
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-}
-
-function onDocumentMouseWheel(event) {
-    // This will zoom the camera in and out
-    camera.position.z += event.deltaY * 0.01;
-    // Clamp the camera's position so it doesn't go too far in or out
-    camera.position.z = Math.max(camera.position.z, 1);
-}
-
-function animate() {
-    requestAnimationFrame(animate);
-
-    // Rotate clouds here if needed
-
-    renderer.render(scene, camera);
-}
-
-init();
+// ... rest of the code
