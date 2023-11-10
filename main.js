@@ -18,6 +18,12 @@ function init() {
     controls = new THREE.OrbitControls(camera, renderer.domElement);
     //... rest of your controls setup
 
+    // Inside the init function after setting up camera and controls
+    camera.position.set(0, 0, 50); // Set the camera far enough to see many atoms
+    controls.target.set(0, 0, 0); // Look at the center of the scene
+    controls.update();
+
+
     // Lighting
     const ambientLight = new THREE.AmbientLight(0x404040); // soft white light
     scene.add(ambientLight);
@@ -54,3 +60,58 @@ function createElectronShell(radius, color, opacity, zPosition) {
 }
 
 // ... rest of the code
+
+function createAtom(x, y, z, color) {
+    const sphereGeometry = new THREE.SphereGeometry(0.5, 32, 32); // Adjust the size as needed
+    const sphereMaterial = new THREE.MeshBasicMaterial({ color: color });
+    const atom = new THREE.Mesh(sphereGeometry, sphereMaterial);
+    atom.position.set(x, y, z);
+    scene.add(atom);
+    return atom;
+}
+
+function createBond(atom1, atom2, color) {
+    const bondGeometry = new THREE.CylinderGeometry(0.1, 0.1, atom1.position.distanceTo(atom2.position), 8);
+    const bondMaterial = new THREE.MeshBasicMaterial({ color: color });
+    const bond = new THREE.Mesh(bondGeometry, bondMaterial);
+
+    // Position
+    const midpoint = new THREE.Vector3().addVectors(atom1.position, atom2.position).multiplyScalar(0.5);
+    bond.position.copy(midpoint);
+
+    // Rotation
+    bond.lookAt(atom2.position);
+
+    // Scale
+    bond.scale.z = atom1.position.distanceTo(atom2.position);
+
+    scene.add(bond);
+    return bond;
+}
+
+
+function generateMolecularBackground() {
+    const numAtoms = 100; // The number of atoms you want to create
+    for (let i = 0; i < numAtoms; i++) {
+        // Random positions
+        const x = Math.random() * 100 - 50; // Random x between -50 and 50
+        const y = Math.random() * 100 - 50; // Random y between -50 and 50
+        const z = Math.random() * 100 - 50; // Random z between -50 and 50
+
+        // Create the atom
+        const color = new THREE.Color(Math.random(), Math.random(), Math.random()); // Random color
+        createAtom(x, y, z, color);
+    }
+
+    // After creating atoms, you could randomly pick pairs and create bonds
+}
+
+
+function init() {
+    // ... (rest of your setup code)
+
+    // Generate the molecular background
+    generateMolecularBackground();
+
+    // ... (rest of your setup code)
+}
