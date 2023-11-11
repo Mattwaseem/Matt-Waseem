@@ -3,67 +3,25 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Atomic Resume</title>
-    <style>
-        /* Reset margins and ensure full height */
-        body,
-        html {
-            height: 100%;
-            margin: 0;
-            overflow: hidden;
-            /* Disable scrollbars */
-        }
-
-        /* Ensure canvas uses full block display */
-        canvas {
-            display: block;
-        }
-
-        /* Styling for the UI buttons */
-        #ui {
-            position: absolute;
-            /* Position the UI div over the canvas */
-            top: 10px;
-            left: 10px;
-            z-index: 100;
-            /* Ensure the UI is above the canvas layer */
-        }
-
-        /* General button styling */
-        #ui button {
-            margin: 5px;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            background-color: #333;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            opacity: 0.8;
-        }
-
-        /* Change button appearance on hover */
-        #ui button:hover {
-            opacity: 1;
-        }
-
-    </style>
+    <!-- The %PUBLIC_URL% placeholder below will be replaced with the actual path during the build process. -->
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <!-- Add any other meta tags or CSS files as needed -->
 </head>
 
 <body>
-    <!-- UI for navigation buttons -->
-    <div id="ui">
-        <button id="contactMe">Contact Me</button>
-        <button id="more">More</button>
-        <button id="projects">My Projects</button>
-    </div>
-    <!-- Include the Three.js library -->
-    <script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
-    <!-- Include the OrbitControls script -->
-    <script src="https://unpkg.com/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-    <!-- Include your custom JavaScript -->
-    <script src="main.js"></script>
+    <!-- This is the root div where your React app will be mounted. -->
+    <div id="root"></div>
+    <!--
+        No need to manually add UI buttons here since they will be managed by React components.
+        If you have any scripts that you want to load before your React app starts, you can include them here.
+    -->
+    <!--
+        The following scripts will be added automatically by your build tool (e.g., Create React App),
+        so you don't need to manually add any <script> tags for your bundled React files.
+    -->
 </body>
 
 </html>

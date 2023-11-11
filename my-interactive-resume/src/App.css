@@ -1,0 +1,75 @@
+/* Remove default app styling */
+/* .App {
+  text-align: center;
+} */
+
+/* Adjust or remove this if it's causing layout issues */
+/* .App-logo {
+  height: 40vmin;
+  pointer-events: none;
+} */
+
+/* You may not need these animations */
+/* @media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+} */
+
+/* Update or remove the App-header class to suit your layout */
+/* .App-header {
+  background-color: #282c34;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+} */
+
+/* Remove or adjust this to avoid affecting the layout */
+/* .App-link {
+  color: #61dafb;
+} */
+
+/* Update or remove keyframes if not needed */
+/* @keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
+
+#canvas-container {
+  width: 100%;
+  height: 100vh;
+  /* This sets the height to the full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* UI Styles */
+#ui {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 100;
+}
+
+#ui button {
+  margin: 5px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: rgb(230, 72, 15);
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+#ui button:hover {
+  opacity: 1;
+}
