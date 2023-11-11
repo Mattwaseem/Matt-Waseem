@@ -6,32 +6,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Atomic Resume</title>
     <style>
-        body {
+        /* Reset margins and ensure full height */
+        body,
+        html {
+            height: 100%;
             margin: 0;
+            overflow: hidden;
+            /* Disable scrollbars */
         }
 
+        /* Ensure canvas uses full block display */
         canvas {
             display: block;
         }
 
-        html,
-        body {
-            overflow: hidden;
-            /* Disable scrollbars */
-            height: 100%;
-            /* Full height */
-            margin: 0;
-            /* No margins */
+        /* Styling for the UI buttons */
+        #ui {
+            position: absolute;
+            /* Position the UI div over the canvas */
+            top: 10px;
+            left: 10px;
+            z-index: 100;
+            /* Ensure the UI is above the canvas layer */
+        }
+
+        /* General button styling */
+        #ui button {
+            margin: 5px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+
+        /* Change button appearance on hover */
+        #ui button:hover {
+            opacity: 1;
         }
 
     </style>
 </head>
 
 <body>
-    <!-- Three.js library -->
+    <!-- UI for navigation buttons -->
+    <div id="ui">
+        <button id="contactMe">Contact Me</button>
+        <button id="more">More</button>
+        <button id="projects">My Projects</button>
+    </div>
+    <!-- Include the Three.js library -->
     <script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
+    <!-- Include the OrbitControls script -->
     <script src="https://unpkg.com/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-    <!-- Your custom script -->
+    <!-- Include your custom JavaScript -->
     <script src="main.js"></script>
 </body>
 
