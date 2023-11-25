@@ -3,25 +3,47 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Atomic Resume</title>
-    <!-- The %PUBLIC_URL% placeholder below will be replaced with the actual path during the build process. -->
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <!-- Add any other meta tags or CSS files as needed -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <!-- This is the root div where your React app will be mounted. -->
-    <div id="root"></div>
-    <!--
-        No need to manually add UI buttons here since they will be managed by React components.
-        If you have any scripts that you want to load before your React app starts, you can include them here.
-    -->
-    <!--
-        The following scripts will be added automatically by your build tool (e.g., Create React App),
-        so you don't need to manually add any <script> tags for your bundled React files.
-    -->
+    <header>
+        <h1>UC Davis</h1>
+        <!-- Navigation bar -->
+        <nav>
+            <ul>
+                <li><a href="#software-engineering">Software Engineering</a></li>
+                <li><a href="#data-science">Data Science</a></li>
+                <li><a href="#molecular-science">Molecular Science</a></li>
+                <!-- Add more sections as needed -->
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="software-engineering">
+            <!-- Content for Software Engineering Section -->
+            <h2>Software Engineering</h2>
+            <p>Content about software engineering projects...</p>
+        </section>
+        <section id="data-science">
+            <!-- Content for Data Science Section -->
+            <h2>Data Science</h2>
+            <p>Content about data science work...</p>
+        </section>
+        <section id="molecular-science">
+            <!-- Content for Molecular Science Section -->
+            <h2>Molecular Science</h2>
+            <p>Content about molecular science research...</p>
+        </section>
+        <!-- Add more sections as needed -->
+    </main>
+    <footer>
+        <!-- Footer content -->
+        <p>© 2023 by Your Name. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
 </body>
 
 </html>
