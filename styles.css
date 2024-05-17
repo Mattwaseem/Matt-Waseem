@@ -29,34 +29,42 @@ body {
 /* Header and navigation */
 header {
     width: 100%;
-    background: #fff;
-    padding: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: fixed;
     top: 0;
     z-index: 1000;
+    /* Ensure the header is above other elements */
+    backdrop-filter: blur(10px);
+    /* Blurred effect */
+    background: rgba(255, 255, 255, 0.8);
+    /* Transparent effect */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 nav {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    padding: 1rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
 }
 
 nav a {
     text-decoration: none;
-    color: #003262;
-    /* UC Berkeley Blue */
+    color: #333;
     font-weight: bold;
-    margin: 0 1rem;
     padding: 0.5rem 1rem;
     border-radius: 5px;
+    transition: background 0.3s;
 }
 
 nav a:hover {
-    background: #FDB515;
-    /* UC Berkeley Gold */
+    background: #eee;
 }
 
 /* Main content styling */
@@ -78,8 +86,7 @@ main {
 
 .intro h1 {
     font-size: 3rem;
-    color: #003262;
-    /* UC Berkeley Blue */
+    color: #024;
 }
 
 .intro .subtitle {
@@ -104,8 +111,7 @@ main {
 }
 
 .profile .spotify {
-    background: #003262;
-    /* UC Berkeley Blue */
+    background: #1db954;
     color: white;
     padding: 1rem;
     border-radius: 5px;
@@ -128,8 +134,6 @@ section {
 section h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
-    color: #003262;
-    /* UC Berkeley Blue */
 }
 
 section h3 {
@@ -149,8 +153,7 @@ ul {
 }
 
 footer {
-    background: #003262;
-    /* UC Berkeley Blue */
+    background: #333;
     color: white;
     text-align: center;
     padding: 1rem;
