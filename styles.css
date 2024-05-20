@@ -32,21 +32,43 @@ header {
     position: fixed;
     top: 0;
     z-index: 1000;
-    /* Ensure the header is above other elements */
-    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+    backdrop-filter: blur(20px);
     /* Blurred effect */
-    background: rgba(255, 255, 255, 0.8);
-    /* Transparent effect */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: none;
+    /* Remove background color */
+    box-shadow: none;
+    /* Remove box shadow */
 }
-
-nav {
-    max-width: 1200px;
+/*
+/* nav {
+    width: 50%;
     margin: 0 auto;
     display: flex;
     justify-content: center;
-    padding: 1rem;
+    align-items: center;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.7); /* Light background color with transparency */
+    padding: 0.5rem 2rem;
+    backdrop-filter: blur(20px); /* Apply blur effect */
+} */
+
+nav {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.7);
+    /* Light background color with transparency */
+    padding: 0.5rem 2rem;
+    backdrop-filter: blur(20px);
+    /* Apply blur effect */
 }
+
 
 nav ul {
     list-style: none;
@@ -59,12 +81,13 @@ nav a {
     color: #333;
     font-weight: bold;
     padding: 0.5rem 1rem;
-    border-radius: 5px;
+    border-radius: 10px;
     transition: background 0.3s;
 }
 
 nav a:hover {
-    background: #eee;
+    background: rgba(255, 255, 255, 0.3);
+    /* Slightly darken on hover */
 }
 
 /* Main content styling */
